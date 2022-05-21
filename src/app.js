@@ -8,24 +8,23 @@ import "./assets/img/4geeks.ico";
 let pronoun = ["the", "our"];
 let adj = ["great", "big"];
 let noun = ["jogger", "racoon"];
-let dom = [".com", ".net", ".me", ".rip"];
 
 window.onload = () => {
   //write your code here
-  let randText = document.getElementById("pepers");
-  function genSentence() {
-    let pronounRan = Math.floor(Math.random() * pronoun.length);
-    let adjRan = Math.floor(Math.random() * adj.length);
-    let nounRan = Math.floor(Math.random() * noun.length);
-    let domRan = Math.floor(Math.random() * dom.length);
+  let randText = document.getElementById("peper");
 
-    randText.innerHTML =
-      pronoun[pronounRan] + adj[adjRan] + noun[nounRan] + dom[domRan];
+  function genList() {
+    for (let i = 0; i < pronoun.length; i++) {
+      for (let a = 0; a < adj.length; a++) {
+        for (let v = 0; v < noun.length; v++) {
+          console.log(pronoun[i] + adj[a] + noun[v] + ".com");
+          // this prints it on the html index----------------------------
+          let p = document.createElement("p");
+          p.innerHTML = pronoun[i] + adj[a] + noun[v] + ".com";
+          randText.appendChild(p);
+        }
+      }
+    }
   }
-  genSentence();
-  let newButton = document.getElementById("refreshButton");
-  newButton.onclick = function() {
-    genSentence();
-  };
-  console.log("Hello Rigo from the console!");
+  genList();
 };
